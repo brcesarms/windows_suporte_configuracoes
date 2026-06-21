@@ -1,5 +1,12 @@
 
 ---
+
+
+
+&nbsp;
+
+
+
 - [Exibindo o nome do computador e o nome do usuario atual](#exibindo-o-nome-do-computador-e-o-nome-do-usuario-atual)
 - [Desabilitar Power Manage](#desabilitar-power-manage)
 - [Habilitar usuario administrador](#habilitar-usuario-administrador)
@@ -15,6 +22,12 @@
 - [Ativar tema escuro](#ativar-tema-escuro)
 - [Desativar o histórico de atividades do Windows](#desativar-o-histórico-de-atividades-do-windows)
 - [Desabilitar aplicativos em segundo plano](#desabilitar-aplicativos-em-segundo-plano)
+
+
+
+&nbsp;
+
+
 
 ---
 
