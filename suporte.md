@@ -1,24 +1,28 @@
 
-# Windows Suporte e configurações
 ---
-- [Windows Suporte e configurações](#windows-suporte-e-configurações)
-      - [Exibindo o nome do computador e o nome do usuario atual](#exibindo-o-nome-do-computador-e-o-nome-do-usuario-atual)
-      - [Desabilitar Power Manage](#desabilitar-power-manage)
-      - [Habilitar usuario administrador](#habilitar-usuario-administrador)
-      - [Gerenciar usuarios](#gerenciar-usuarios)
-      - [Renomear computador](#renomear-computador)
-      - [CHKDSK](#chkdsk)
-      - [Defrag Windows](#defrag-windows)
-      - [SFC e DISM](#sfc-e-dism)
-      - [Atualizar políticas de usuário](#atualizar-políticas-de-usuário)
-      - [Reiniciar print spooler service](#reiniciar-print-spooler-service)
-      - [Atualizar interface de rede](#atualizar-interface-de-rede)
-      - [Mapeamento de pasta de rede](#mapeamento-de-pasta-de-rede)
-      - [Ativar tema escuro](#ativar-tema-escuro)
-      - [Desativar o histórico de atividades do Windows](#desativar-o-histórico-de-atividades-do-windows)
-      - [Desabilitar aplicativos em segundo plano](#desabilitar-aplicativos-em-segundo-plano)
+- [Exibindo o nome do computador e o nome do usuario atual](#exibindo-o-nome-do-computador-e-o-nome-do-usuario-atual)
+- [Desabilitar Power Manage](#desabilitar-power-manage)
+- [Habilitar usuario administrador](#habilitar-usuario-administrador)
+- [Gerenciar usuarios](#gerenciar-usuarios)
+- [Renomear computador](#renomear-computador)
+- [CHKDSK](#chkdsk)
+- [Defrag Windows](#defrag-windows)
+- [SFC e DISM](#sfc-e-dism)
+- [Atualizar políticas de usuário](#atualizar-políticas-de-usuário)
+- [Reiniciar print spooler service](#reiniciar-print-spooler-service)
+- [Atualizar interface de rede](#atualizar-interface-de-rede)
+- [Mapeamento de pasta de rede](#mapeamento-de-pasta-de-rede)
+- [Ativar tema escuro](#ativar-tema-escuro)
+- [Desativar o histórico de atividades do Windows](#desativar-o-histórico-de-atividades-do-windows)
+- [Desabilitar aplicativos em segundo plano](#desabilitar-aplicativos-em-segundo-plano)
 
 ---
+
+
+
+&nbsp;
+
+
 
 #### Exibindo o nome do computador e o nome do usuario atual
 ```shell
