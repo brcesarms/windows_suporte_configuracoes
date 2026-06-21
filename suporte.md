@@ -1,26 +1,26 @@
 
-# Indice
-
-- [Indice](#indice)
-    - [Exibindo o nome do computador e o nome do usuario atual](#exibindo-o-nome-do-computador-e-o-nome-do-usuario-atual)
-    - [Desabilitar Power Manage](#desabilitar-power-manage)
-    - [Habilitar usuario administrador](#habilitar-usuario-administrador)
-    - [Gerenciar usuarios](#gerenciar-usuarios)
-    - [Renomear computador](#renomear-computador)
-    - [CHKDSK](#chkdsk)
-    - [Defrag Windows](#defrag-windows)
+# Windows Suporte e configurações
+---
+- [Windows Suporte e configurações](#windows-suporte-e-configurações)
+      - [Exibindo o nome do computador e o nome do usuario atual](#exibindo-o-nome-do-computador-e-o-nome-do-usuario-atual)
+      - [Desabilitar Power Manage](#desabilitar-power-manage)
+      - [Habilitar usuario administrador](#habilitar-usuario-administrador)
+      - [Gerenciar usuarios](#gerenciar-usuarios)
+      - [Renomear computador](#renomear-computador)
+      - [CHKDSK](#chkdsk)
+      - [Defrag Windows](#defrag-windows)
       - [SFC e DISM](#sfc-e-dism)
-    - [Atualizar políticas de usuário](#atualizar-políticas-de-usuário)
-    - [Reiniciar print spooler service](#reiniciar-print-spooler-service)
-    - [Atualizar interface de rede](#atualizar-interface-de-rede)
-    - [Mapeamento de pasta de rede](#mapeamento-de-pasta-de-rede)
-    - [Ativar tema escuro](#ativar-tema-escuro)
-    - [Desativar o histórico de atividades do Windows](#desativar-o-histórico-de-atividades-do-windows)
-    - [Desabilitar aplicativos em segundo plano](#desabilitar-aplicativos-em-segundo-plano)
+      - [Atualizar políticas de usuário](#atualizar-políticas-de-usuário)
+      - [Reiniciar print spooler service](#reiniciar-print-spooler-service)
+      - [Atualizar interface de rede](#atualizar-interface-de-rede)
+      - [Mapeamento de pasta de rede](#mapeamento-de-pasta-de-rede)
+      - [Ativar tema escuro](#ativar-tema-escuro)
+      - [Desativar o histórico de atividades do Windows](#desativar-o-histórico-de-atividades-do-windows)
+      - [Desabilitar aplicativos em segundo plano](#desabilitar-aplicativos-em-segundo-plano)
 
 ---
 
-### Exibindo o nome do computador e o nome do usuario atual
+#### Exibindo o nome do computador e o nome do usuario atual
 ```shell
 Get-CimInstance -ClassName Win32_Desktop
   
@@ -29,7 +29,7 @@ Get-CimInstance -ClassName Win32_Desktop
 ---
 
 
-### Desabilitar Power Manage
+#### Desabilitar Power Manage
 ```shell
 powercfg.exe /SETACVALUEINDEX SCHEME_CURRENT SUB_VIDEO VIDEOIDLE 0
 powercfg.exe /SETDCVALUEINDEX SCHEME_CURRENT SUB_VIDEO VIDEOIDLE 0
@@ -76,7 +76,7 @@ Invoke-Expression -Command $cmdkeyCommand
 
 -->
 
-### Habilitar usuario administrador
+#### Habilitar usuario administrador
 ```shell
 Enable-LocalUser -Name "Administrador"
 Set-LocalUser -Name "Administrador" -Password (ConvertTo-SecureString -String "absemsau*" -AsPlainText -Force)
@@ -85,7 +85,7 @@ Set-LocalUser -Name "Administrador" -Password (ConvertTo-SecureString -String "a
 
 ---
 
-### Gerenciar usuarios
+#### Gerenciar usuarios
 ```shell
 # Removing user "user" from admin group and making it default user
 net localgroup administrators user /delete
@@ -99,42 +99,44 @@ net user user /passwordchg:no
 
 ---
 
-### Renomear computador
+#### Renomear computador
 ```shell
 Write-Host "Rename Computer"
 $RENAME = Read-Host "escreva nome do computador"
 Rename-Computer -NewName $RENAME
 -Restart  
-
+ 
 ```
 
 ---
 
-### CHKDSK
+#### CHKDSK
 ```shell
 chkdsk c: /r
-
+ 
 ```
 
 ou
+
 ```shell
 Repair-Volume C -OfflineScanAndFix
-
+ 
 ```
 
 ---
 
-### Defrag Windows
+#### Defrag Windows
 ```shell
 # Running DEFRAG HD
 defrag C: /v
-
+ 
 ```
 
 ou
+
 ```shell
 Optimize-Volume -DriveLetter C -Defrag -TierOptimize -Verbose
-
+ 
 ```
 
 ```shell
@@ -157,6 +159,7 @@ DISM /Online /Cleanup-image /Restorehealth
 ```
 
 ou
+
 ```shell
 Repair-WindowsImage -Online -StartComponentCleanup -RestoreHealth
 
@@ -164,12 +167,14 @@ Repair-WindowsImage -Online -StartComponentCleanup -RestoreHealth
 
 ---
 
-### Atualizar políticas de usuário
+#### Atualizar políticas de usuário
 ```shell
 gpupdate /force
 
 ```
+
 ou
+
 ```shell
 Invoke-Expression -Command "gpupdate /force"
 
@@ -177,7 +182,7 @@ Invoke-Expression -Command "gpupdate /force"
 
 ---
 
-### Reiniciar print spooler service
+#### Reiniciar print spooler service
 ```shell
 # Stop print spooler service
 Stop-Service -Name Spooler -Force
@@ -195,7 +200,7 @@ Restart-Service -Name Spooler -Force
 
 ---
 
-### Atualizar interface de rede
+#### Atualizar interface de rede
 ```shell
 # flushdns
 ipconfig /flushdns
@@ -222,7 +227,7 @@ NETSH interface set interface name=Ethernet admin=ENABLE
 
 ---
 
-### Mapeamento de pasta de rede
+#### Mapeamento de pasta de rede
 ```shell
 # \\srv-storage-01\semsau
 net use \\srv-storage-01\semsau$ /PERSISTENT:YES
@@ -256,7 +261,7 @@ net use \\srv-storage-01\semsau-visa$ /PERSISTENT:YES
 
 ---
 
-### Ativar tema escuro
+#### Ativar tema escuro
 ```shell
 reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 0 /f
   
@@ -264,7 +269,7 @@ reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v App
 
 ---
 
-### Desativar o histórico de atividades do Windows
+#### Desativar o histórico de atividades do Windows
 ```shell
 reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackDocs /t REG_DWORD /d 0 /f
   
@@ -272,7 +277,7 @@ reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Star
 
 ---
 
-### Desabilitar aplicativos em segundo plano
+#### Desabilitar aplicativos em segundo plano
 ```shell
 reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications /v GlobalUserDisabled /t REG_DWORD /d 1 /f
   
