@@ -2,8 +2,27 @@
 # Suporte
 
 ## Indice
-* [Exibindo o nome do computador e o nome do usuario atual](#Exibindo-o-nome-do-computador-e-o-nome-do-usuario-atual)
-* [Desabilitar aplicativos em segundo plano](#Desabilitar-aplicativos-em-segundo-plano)
+- [Suporte](#suporte)
+  - [Indice](#indice)
+    - [Exibindo o nome do computador e o nome do usuario atual](#exibindo-o-nome-do-computador-e-o-nome-do-usuario-atual)
+    - [Desabilitar Power Manage](#desabilitar-power-manage)
+    - [Habilitar usuario administrador](#habilitar-usuario-administrador)
+    - [Gerenciar usuarios](#gerenciar-usuarios)
+    - [Renomear computador](#renomear-computador)
+    - [CHKDSK](#chkdsk)
+    - [ou](#ou)
+    - [Defrag Windows](#defrag-windows)
+    - [ou](#ou-1)
+      - [SFC / DISM](#sfc--dism)
+    - [ou](#ou-2)
+    - [Atualizar políticas de usuário](#atualizar-políticas-de-usuário)
+    - [ou](#ou-3)
+    - [Reiniciar print spooler service](#reiniciar-print-spooler-service)
+    - [Atualizar interface de rede](#atualizar-interface-de-rede)
+    - [Mapeamento de pasta de rede](#mapeamento-de-pasta-de-rede)
+    - [Ativar tema escuro](#ativar-tema-escuro)
+    - [Desativar o histórico de atividades do Windows](#desativar-o-histórico-de-atividades-do-windows)
+    - [Desabilitar aplicativos em segundo plano](#desabilitar-aplicativos-em-segundo-plano)
 
 ---
 
@@ -151,7 +170,7 @@ Repair-WindowsImage -Online -StartComponentCleanup -RestoreHealth
 
 ---
 
-### Update User Policy
+### Atualizar políticas de usuário
 ```shell
 gpupdate /force
 
@@ -182,15 +201,15 @@ Restart-Service -Name Spooler -Force
 
 ---
 
-### Refresh Interface Network
+### Atualizar interface de rede
 ```shell
-#flushdns
+# flushdns
 ipconfig /flushdns
 
-#release
+# release
 ipconfig /release
 
-#renew
+# renew
 ipconfig /renew
 
 # Desable Wi-Fi... 
@@ -209,7 +228,7 @@ NETSH interface set interface name=Ethernet admin=ENABLE
 
 ---
 
-### Network Folder Mapping
+### Mapeamento de pasta de rede
 ```shell
 # \\srv-storage-01\semsau
 net use \\srv-storage-01\semsau$ /PERSISTENT:YES
@@ -243,7 +262,7 @@ net use \\srv-storage-01\semsau-visa$ /PERSISTENT:YES
 
 ---
 
-### Enable Dark Theme
+### Ativar tema escuro
 ```shell
 reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 0 /f
   
@@ -251,7 +270,7 @@ reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v App
 
 ---
 
-### Turn Off Windows Activity History
+### Desativar o histórico de atividades do Windows
 ```shell
 reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackDocs /t REG_DWORD /d 0 /f
   
