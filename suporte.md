@@ -131,8 +131,8 @@ Repair-Volume C -OfflineScanAndFix
 ---
 
 ### Defrag Windows
-* Running DEFRAG HD
 ```shell
+# Running DEFRAG HD
 defrag C: /v
 
 ```
@@ -143,8 +143,8 @@ Optimize-Volume -DriveLetter C -Defrag -TierOptimize -Verbose
 
 ```
 
-* Running DEFRAG SSD
 ```shell
+# Running DEFRAG SSD
 Optimize-Volume -DriveLetter C -ReTrim -Verbose  
   
 ```
