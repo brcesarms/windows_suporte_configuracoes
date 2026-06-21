@@ -1,5 +1,6 @@
 
 # Indice
+
 - [Indice](#indice)
     - [Exibindo o nome do computador e o nome do usuario atual](#exibindo-o-nome-do-computador-e-o-nome-do-usuario-atual)
     - [Desabilitar Power Manage](#desabilitar-power-manage)
@@ -10,7 +11,6 @@
     - [Defrag Windows](#defrag-windows)
       - [SFC e DISM](#sfc-e-dism)
     - [Atualizar políticas de usuário](#atualizar-políticas-de-usuário)
-    - [ou](#ou)
     - [Reiniciar print spooler service](#reiniciar-print-spooler-service)
     - [Atualizar interface de rede](#atualizar-interface-de-rede)
     - [Mapeamento de pasta de rede](#mapeamento-de-pasta-de-rede)
@@ -169,7 +169,7 @@ Repair-WindowsImage -Online -StartComponentCleanup -RestoreHealth
 gpupdate /force
 
 ```
-### ou
+ou
 ```shell
 Invoke-Expression -Command "gpupdate /force"
 
