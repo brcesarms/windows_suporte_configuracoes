@@ -7,6 +7,7 @@
 
 
 
+- [Habilitar a execução de scripts do PowerShell](#habilitar-a-execução-de-scripts-do-powershell)
 - [Exibindo o nome do computador e o nome do usuario atual](#exibindo-o-nome-do-computador-e-o-nome-do-usuario-atual)
 - [Desabilitar Power Manage](#desabilitar-power-manage)
 - [Habilitar usuario administrador](#habilitar-usuario-administrador)
@@ -37,8 +38,23 @@
 
 
 
+#### Habilitar a execução de scripts do PowerShell
+```PowerShell
+# Para verificar as configurações atuais da política de execução
+Get-ExecutionPolicy
+  
+```
+```PowerShell
+# Para definir a política como Irrestrita
+set-ExecutionPolicy unrestricted
+  
+```
+
+---
+
+
 #### Exibindo o nome do computador e o nome do usuario atual
-```shell
+```PowerShell
 Get-CimInstance -ClassName Win32_Desktop
   
 ```
@@ -47,7 +63,7 @@ Get-CimInstance -ClassName Win32_Desktop
 
 
 #### Desabilitar Power Manage
-```shell
+```PowerShell
 powercfg.exe /SETACVALUEINDEX SCHEME_CURRENT SUB_VIDEO VIDEOIDLE 0
 powercfg.exe /SETDCVALUEINDEX SCHEME_CURRENT SUB_VIDEO VIDEOIDLE 0
 powercfg.exe /SETACVALUEINDEX SCHEME_CURRENT SUB_SLEEP STANDBYIDLE 0
@@ -94,7 +110,7 @@ Invoke-Expression -Command $cmdkeyCommand
 -->
 
 #### Habilitar usuario administrador
-```shell
+```PowerShell
 Enable-LocalUser -Name "Administrador"
 Set-LocalUser -Name "Administrador" -Password (ConvertTo-SecureString -String "absemsau*" -AsPlainText -Force)
 
@@ -103,7 +119,7 @@ Set-LocalUser -Name "Administrador" -Password (ConvertTo-SecureString -String "a
 ---
 
 #### Gerenciar usuarios
-```shell
+```PowerShell
 # Removing user "user" from admin group and making it default user
 net localgroup administrators user /delete
 net localgroup users user /add
@@ -117,7 +133,7 @@ net user user /passwordchg:no
 ---
 
 #### Renomear computador
-```shell
+```PowerShell
 Write-Host "Rename Computer"
 $RENAME = Read-Host "escreva nome do computador"
 Rename-Computer -NewName $RENAME
@@ -128,14 +144,14 @@ Rename-Computer -NewName $RENAME
 ---
 
 #### CHKDSK
-```shell
+```PowerShell
 chkdsk c: /r
  
 ```
 
 ou
 
-```shell
+```PowerShell
 Repair-Volume C -OfflineScanAndFix
  
 ```
@@ -143,7 +159,7 @@ Repair-Volume C -OfflineScanAndFix
 ---
 
 #### Defrag Windows
-```shell
+```PowerShell
 # Running DEFRAG HD
 defrag C: /v
  
@@ -151,12 +167,12 @@ defrag C: /v
 
 ou
 
-```shell
+```PowerShell
 Optimize-Volume -DriveLetter C -Defrag -TierOptimize -Verbose
  
 ```
 
-```shell
+```PowerShell
 # Running DEFRAG SSD
 Optimize-Volume -DriveLetter C -ReTrim -Verbose  
   
@@ -170,14 +186,14 @@ sfc /scannow
 
 ```
 
-```shell
+```PowerShell
 DISM /Online /Cleanup-image /Restorehealth  
 
 ```
 
 ou
 
-```shell
+```PowerShell
 Repair-WindowsImage -Online -StartComponentCleanup -RestoreHealth
 
 ```
@@ -185,14 +201,14 @@ Repair-WindowsImage -Online -StartComponentCleanup -RestoreHealth
 ---
 
 #### Atualizar políticas de usuário
-```shell
+```PowerShell
 gpupdate /force
 
 ```
 
 ou
 
-```shell
+```PowerShell
 Invoke-Expression -Command "gpupdate /force"
 
 ```
@@ -200,7 +216,7 @@ Invoke-Expression -Command "gpupdate /force"
 ---
 
 #### Reiniciar print spooler service
-```shell
+```PowerShell
 # Stop print spooler service
 Stop-Service -Name Spooler -Force
 
@@ -218,7 +234,7 @@ Restart-Service -Name Spooler -Force
 ---
 
 #### Atualizar interface de rede
-```shell
+```PowerShell
 # flushdns
 ipconfig /flushdns
 
@@ -245,32 +261,32 @@ NETSH interface set interface name=Ethernet admin=ENABLE
 ---
 
 #### Mapeamento de pasta de rede
-```shell
+```PowerShell
 # \\srv-storage-01\semsau
 net use \\srv-storage-01\semsau$ /PERSISTENT:YES
 #New-PSDrive –Name “V” –PSProvider FileSystem –Root “\\srv-storage-01\semsau$ ” –Persist  
 
 ```
 
-```shell
+```PowerShell
 # \\srv-storage-01\semsau-fms$
 net use \\srv-storage-01\semsau-fms$ /PERSISTENT:YES
 
 ```
 
-```shell
+```PowerShell
 # \\srv-storage-01\semsau-pad$
 net use \\srv-storage-01\semsau-pad$ /PERSISTENT:YES
 
 ```
 
-```shell
+```PowerShell
 # \\srv-storage-01\semsau-atencao-basica$
 net use \\srv-storage-01\semsau-atencao-basica$ /PERSISTENT:YES
 
 ```
 
-```shell
+```PowerShell
 # \\srv-storage-01\semsau-visa$
 net use \\srv-storage-01\semsau-visa$ /PERSISTENT:YES
 
@@ -279,7 +295,7 @@ net use \\srv-storage-01\semsau-visa$ /PERSISTENT:YES
 ---
 
 #### Ativar tema escuro
-```shell
+```PowerShell
 reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 0 /f
   
 ```
@@ -287,7 +303,7 @@ reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v App
 ---
 
 #### Desativar o histórico de atividades do Windows
-```shell
+```PowerShell
 reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackDocs /t REG_DWORD /d 0 /f
   
 ```
@@ -295,7 +311,7 @@ reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Star
 ---
 
 #### Desabilitar aplicativos em segundo plano
-```shell
+```PowerShell
 reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications /v GlobalUserDisabled /t REG_DWORD /d 1 /f
   
 ```
