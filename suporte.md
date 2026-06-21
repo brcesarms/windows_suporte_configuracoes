@@ -1,22 +1,16 @@
 
-# Suporte
-
-## Indice
-- [Suporte](#suporte)
-  - [Indice](#indice)
+# Indice
+- [Indice](#indice)
     - [Exibindo o nome do computador e o nome do usuario atual](#exibindo-o-nome-do-computador-e-o-nome-do-usuario-atual)
     - [Desabilitar Power Manage](#desabilitar-power-manage)
     - [Habilitar usuario administrador](#habilitar-usuario-administrador)
     - [Gerenciar usuarios](#gerenciar-usuarios)
     - [Renomear computador](#renomear-computador)
     - [CHKDSK](#chkdsk)
-    - [ou](#ou)
     - [Defrag Windows](#defrag-windows)
-    - [ou](#ou-1)
-      - [SFC / DISM](#sfc--dism)
-    - [ou](#ou-2)
+      - [SFC e DISM](#sfc-e-dism)
     - [Atualizar políticas de usuário](#atualizar-políticas-de-usuário)
-    - [ou](#ou-3)
+    - [ou](#ou)
     - [Reiniciar print spooler service](#reiniciar-print-spooler-service)
     - [Atualizar interface de rede](#atualizar-interface-de-rede)
     - [Mapeamento de pasta de rede](#mapeamento-de-pasta-de-rede)
@@ -122,7 +116,7 @@ chkdsk c: /r
 
 ```
 
-### ou
+ou
 ```shell
 Repair-Volume C -OfflineScanAndFix
 
@@ -137,7 +131,7 @@ defrag C: /v
 
 ```
 
-### ou
+ou
 ```shell
 Optimize-Volume -DriveLetter C -Defrag -TierOptimize -Verbose
 
@@ -151,7 +145,7 @@ Optimize-Volume -DriveLetter C -ReTrim -Verbose
 
 ---
 
-#### SFC / DISM
+#### SFC e DISM
 ```shell
 sfc /scannow
 
@@ -162,7 +156,7 @@ DISM /Online /Cleanup-image /Restorehealth
 
 ```
 
-### ou
+ou
 ```shell
 Repair-WindowsImage -Online -StartComponentCleanup -RestoreHealth
 
