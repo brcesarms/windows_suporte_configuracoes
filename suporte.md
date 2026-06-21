@@ -1,10 +1,11 @@
 
 # Suporte
 
-## #️⃣ Contents
-* [Exibindo o nome do computador e o nome do usuario atual](#Exibindo-o-nome-do-computador e-o-nome-do-usuario-atual)
+## Indice
+* [Exibindo o nome do computador e o nome do usuario atual](#Exibindo-o-nome-do-computador-e-o-nome-do-usuario-atual)
+* [Desabilitar aplicativos em segundo plano](#Desabilitar-aplicativos-em-segundo-plano)
 
-
+---
 
 ### Exibindo o nome do computador e o nome do usuario atual
 ```shell
@@ -250,7 +251,7 @@ reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize /v App
 
 ---
 
-#### Turn Off Windows Activity History
+### Turn Off Windows Activity History
 ```shell
 reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Start_TrackDocs /t REG_DWORD /d 0 /f
   
@@ -258,7 +259,7 @@ reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Star
 
 ---
 
-#### Disable Background apps
+### Desabilitar aplicativos em segundo plano
 ```shell
 reg add HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications /v GlobalUserDisabled /t REG_DWORD /d 1 /f
   
